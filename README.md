@@ -27,10 +27,11 @@
 - [x] 10. Git 설정 및 GitHub 연동
 
 ## 보너스 과제 (선택)
+
 - [x] 1. Docker Compose 기초
-- [] 2. Docker Compose 멀티 컨테이너
-- [] 3. Compose 운영 명령어 습득
-- [] 4. 환경 변수 활용
+- [ ] 2. Docker Compose 멀티 컨테이너
+- [ ] 3. Compose 운영 명령어 습득
+- [ ] 4. 환경 변수 활용
 - [x] 5. GitHub SSH 키 설정
 
 ## 수행 항목 증빙 자료
@@ -46,9 +47,10 @@ Docker 및 Git 버전
 
 ### 1. 트러블 슈팅 
 
-Git에서 SSH키를 설정한 후에도 browser로 인증 요청이 옮 -> 인증을 ssh로 바꾸지 않음
--> git remote -v 해본 결과 https(브라우저)인증으로 되어있었음
--> git remote set-url로 ssh로 인증하게 함
+- **증상**: Git에서 SSH키를 설정한 후에도 브라우저로 인증창이 뜸 
+- **원인**: git remote 주소가 HTTPS 형식으로 남아서 SSH 키를 사용하지 않음
+- **해결**: git remote set-url 을 통해 SSH키를 사용하도록 함
+- **배운점**: 인증 방식은 GitHub키 등록과 별개로 remote 주소 형식도 바꿔줘야 등록된 키로 인증할 수 있음
 ![1. 트러블 슈팅](./기능%20요구%20사항%20증빙%20자료/트러블%20슈팅%20증빙%20자료1(git)%20.png)
 
 ### 2. 터미널 조작 로그 기록
