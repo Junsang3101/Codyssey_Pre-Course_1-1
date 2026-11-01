@@ -1,0 +1,77 @@
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker ps
+CONTAINER ID   IMAGE     COMMAND            CREATED         STATUS         PORTS                                     NAMES
+38dc20f39f26   ubuntu    "sleep infinity"   9 minutes ago   Up 9 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   serene_allen
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker exec -it 38d bash
+root@38dc20f39f26:/# cd var/www/html
+root@38dc20f39f26:/var/www/html# ls -al
+total 12
+drwxrwxrwx 1 101  101  4096 Oct 31 09:52  .
+drwxr-xr-x 3 root root 4096 Nov  1 04:45  ..
+drwxrwxrwx 1 101  101  4096 Oct 31 10:09  .git
+-rwxrwxrwx 1 101  101  2010 Nov  1 04:42  README.md
+-rwxrwxrwx 1 101  101   502 Nov  1 04:42  dockerfile
+-rwxrwxrwx 1 101  101   285 Oct 31 09:34  index.html
+-rw-r--r-- 1 root root  615 Oct 31 09:33  index.nginx-debian.html
+drwxrwxrwx 1 101  101  4096 Oct 31 10:08 ''$'\352\270\260\353\212\245'' '$'\354\232\224\352\265\254'' '$'\354\202\254\355\225\255'' '$'\354\246\235\353\271\231'' '$'\354\236\220\353\243\214'
+root@38dc20f39f26:/var/www/html# exit
+exit
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug 38d
+    Learn more at https://docs.docker.com/go/debug-cli/
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker ps
+CONTAINER ID   IMAGE     COMMAND            CREATED          STATUS          PORTS                                     NAMES
+38dc20f39f26   ubuntu    "sleep infinity"   10 minutes ago   Up 10 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   serene_allen
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker rm -f 38d
+38d
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker run -d -p 8080:80 -v ${pwd}:/var/www/html --name ubuntu-web-test ubuntu
+ae18e1344fa6e149c7e6af1b1c25a82e075d5ea0e217e1db31c24ac1395ac3c6
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker ps -a
+CONTAINER ID   IMAGE                COMMAND                  CREATED          STATUS                      PORTS     NAMES
+ae18e1344fa6   ubuntu               "/bin/bash"              12 seconds ago   Exited (0) 12 seconds ago             ubuntu-web-test
+15e4b89bc8f8   junsang-web_01:1.1   "/docker-entrypoint.…"   21 hours ago     Exited (0) 20 hours ago               junsang-web_01-container
+825a73e7fb36   ubuntu               "cat /data/persisten…"   44 hours ago     Exited (0) 44 hours ago               volume-verify-container
+4a5a8067ce72   nginx:alpine         "/docker-entrypoint.…"   44 hours ago     Exited (0) 22 hours ago               bind-server
+71f925e8307a   ubuntu               "bash"                   45 hours ago     Exited (0) 45 hours ago               gracious_cartwright
+68a408c6c4f9   ubuntu               "bash"                   45 hours ago     Exited (137) 22 hours ago             vigorous_goldwasser
+477bd90e9f47   hello-world          "/hello"                 45 hours ago     Exited (0) 45 hours ago               sleepy_perlman
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker rm -f ae1
+ae1
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker ps -a
+CONTAINER ID   IMAGE                COMMAND                  CREATED        STATUS                      PORTS     NAMES
+15e4b89bc8f8   junsang-web_01:1.1   "/docker-entrypoint.…"   21 hours ago   Exited (0) 20 hours ago               junsang-web_01-container
+825a73e7fb36   ubuntu               "cat /data/persisten…"   44 hours ago   Exited (0) 44 hours ago               volume-verify-container
+4a5a8067ce72   nginx:alpine         "/docker-entrypoint.…"   44 hours ago   Exited (0) 22 hours ago               bind-server
+71f925e8307a   ubuntu               "bash"                   45 hours ago   Exited (0) 45 hours ago               gracious_cartwright
+68a408c6c4f9   ubuntu               "bash"                   45 hours ago   Exited (137) 22 hours ago             vigorous_goldwasser
+477bd90e9f47   hello-world          "/hello"                 45 hours ago   Exited (0) 45 hours ago               sleepy_perlman
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker run -d -p 8080:80 -v ${pwd}:/var/www/html --name ubuntu-web-test ubuntu sleep infinity
+5f31696b2eac13d303367663e46acec28626ec0fe292db1bcd9d8197d11aa31c
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker ps
+CONTAINER ID   IMAGE     COMMAND            CREATED         STATUS         PORTS                                     NAMES
+5f31696b2eac   ubuntu    "sleep infinity"   3 seconds ago   Up 2 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   ubuntu-web-test
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker exec -it 5f3
+docker: 'docker exec' requires at least 2 arguments
+
+Usage:  docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+
+See 'docker exec --help' for more information
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug 5f3
+    Learn more at https://docs.docker.com/go/debug-cli/
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker exec -it 5f3 bash
+root@5f31696b2eac:/# cd var/www/html
+root@5f31696b2eac:/var/www/html# ls -al
+total 12
+drwxrwxrwx 1 101  101  4096 Oct 31 09:52  .
+drwxr-xr-x 3 root root 4096 Nov  1 04:59  ..
+drwxrwxrwx 1 101  101  4096 Oct 31 10:09  .git
+-rwxrwxrwx 1 101  101  2010 Nov  1 04:42  README.md
+-rwxrwxrwx 1 101  101   502 Nov  1 04:42  dockerfile
+-rwxrwxrwx 1 101  101   285 Oct 31 09:34  index.html
+-rw-r--r-- 1 root root  615 Oct 31 09:33  index.nginx-debian.html
+drwxrwxrwx 1 101  101  4096 Oct 31 10:08 ''$'\352\270\260\353\212\245'' '$'\354\232\224\352\265\254'' '$'\354\202\254\355\225\255'' '$'\354\246\235\353\271\231'' '$'\354\236\220\353\243\214'
+root@5f31696b2eac:/var/www/html#
