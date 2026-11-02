@@ -57,10 +57,142 @@ Docker 및 Git 버전
 ### Docker 기본 운영 명령
 
 - [5. Docker 기본 운영 명령](./기능%20요구%20사항%20증빙%20자료/5.%20docker%20기본%20운영%20명령.log)
+```powershell
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker image ls
+                                                                                                                                                                                                            i Info →   U  In Use
+IMAGE                  ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest     c567b231f656       25.9kB         9.49kB    U   
+junsang-web_01:1.1     0c66879e7cd3       93.6MB         26.3MB    U   
+my-web-server:latest   306f501c05cd       93.6MB         26.3MB        
+nginx:alpine           785835ea65db       94.5MB         27.2MB    U   
+nginx:latest           5ab5b0b01097        243MB         66.8MB        
+ubuntu:latest          6a06111c3b0a        163MB         45.9MB    U   
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker ps -a
+CONTAINER ID   IMAGE                COMMAND                   CREATED             STATUS                     PORTS                                     NAMES
+15e4b89bc8f8   junsang-web_01:1.1   "/docker-entrypoint.…"   About an hour ago   Up About an hour           0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   junsang-web_01-container
+825a73e7fb36   ubuntu               "cat /data/persisten…"   24 hours ago        Exited (0) 24 hours ago                                              volume-verify-container
+4a5a8067ce72   nginx:alpine         "/docker-entrypoint.…"   24 hours ago        Exited (0) 2 hours ago                                               bind-server
+71f925e8307a   ubuntu               "bash"                    25 hours ago        Exited (0) 25 hours ago                                              gracious_cartwright
+68a408c6c4f9   ubuntu               "bash"                    25 hours ago        Exited (137) 2 hours ago                                             vigorous_goldwasser
+477bd90e9f47   hello-world          "/hello"                  25 hours ago        Exited (0) 25 hours ago                                              sleepy_perlman
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker logs 15e
+/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+/docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+/docker-entrypoint.sh: Configuration complete; ready for start up
+2026/10/31 07:57:09 [notice] 1#1: using the "epoll" event method
+2026/10/31 07:57:09 [notice] 1#1: nginx/1.31.8
+2026/10/31 07:57:09 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/10/31 07:57:09 [notice] 1#1: OS: Linux 6.18.54.1-microsoft-standard-WSL2
+2026/10/31 07:57:09 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2026/10/31 07:57:09 [notice] 1#1: start worker processes
+2026/10/31 07:57:09 [notice] 1#1: start worker process 30
+2026/10/31 07:57:09 [notice] 1#1: start worker process 31
+2026/10/31 07:57:09 [notice] 1#1: start worker process 32
+2026/10/31 07:57:09 [notice] 1#1: start worker process 33
+2026/10/31 07:57:09 [notice] 1#1: start worker process 34
+2026/10/31 07:57:09 [notice] 1#1: start worker process 35
+2026/10/31 07:57:09 [notice] 1#1: start worker process 36
+2026/10/31 07:57:09 [notice] 1#1: start worker process 37
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker stats 
+CONTAINER ID   NAME                       CPU %     MEM USAGE / LIMIT     MEM %     NET I/O         BLOCK I/O        PIDS
+15e4b89bc8f8   junsang-web_01-container   0.00%     10.23MiB / 7.605GiB   0.13%     1.75kB / 126B   11.3MB / 139kB   9
+```
 
 ### 컨테이너 실행
 
 - [6. 컨테이너 실행](./기능%20요구%20사항%20증빙%20자료/6.%20컨테이너%20실행%20실습.log)
+```powershell
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker run -d -p 8080:80 --name ubuntu-web-test -v ${pwd}:/var/www/html ubuntu sleep infinity
+bd2cc02c98aa6741010c3b5a5a5309dfffebf72d1e395ced1c64e4378f4a4691
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker ps
+CONTAINER ID   IMAGE     COMMAND            CREATED          STATUS          PORTS                   NAMES
+bd2cc02c98aa   ubuntu    "sleep infinity"   39 seconds ago   Up 38 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   ubuntu-web-test
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker exec -it bd2
+docker: 'docker exec' requires at least 2 arguments
+
+Usage:  docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+
+See 'docker exec --help' for more information
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug bd2
+    Learn more at https://docs.docker.com/go/debug-cli/
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker exec -it bd2 bash
+root@bd2cc02c98aa:/# apt-get update && apt-get install -y nginx
+Get:1 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+Get:2 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]                     
+Get:3 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [258 kB]
+Get:4 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [609 kB]
+Get:5 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+Get:6 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [24.6 kB]
+Get:7 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [746 kB]   
+Get:8 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]            
+Get:9 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [189 kB]
+Get:10 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [352 kB]
+Get:11 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1874 kB]
+Get:12 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [20.1 MB]
+Get:13 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [991 kB]              
+Get:14 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [472 kB]          
+Get:15 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [668 kB]        
+Get:16 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [26.1 kB]       
+Get:17 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3308 B]        
+Fetched 26.9 MB in 7s (3675 kB/s)                                                                  
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Solving dependencies... Done
+The following additional packages will be installed:
+  nginx-common
+Suggested packages:
+  fcgiwrap nginx-doc ssl-cert
+The following NEW packages will be installed:
+  nginx nginx-common
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 656 kB of archives.
+After this operation, 1864 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 nginx-common all 1.28.3-2ubuntu1.12 [38.2 kB]
+Get:2 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 nginx amd64 1.28.3-2ubuntu1.12 [618 kB]
+Fetched 656 kB in 2s (291 kB/s)
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 79, <STDIN> line 2.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 2.)
+debconf: falling back to frontend: Teletype
+Preconfiguring packages ...
+Selecting previously unselected package nginx-common.
+(Reading database ... 7789 files and directories currently installed.)
+Preparing to unpack .../nginx-common_1.28.3-2ubuntu1.12_all.deb ...
+Unpacking nginx-common (1.28.3-2ubuntu1.12) ...
+Selecting previously unselected package nginx.
+Preparing to unpack .../nginx_1.28.3-2ubuntu1.12_amd64.deb ...
+Unpacking nginx (1.28.3-2ubuntu1.12) ...
+Setting up nginx-common (1.28.3-2ubuntu1.12) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 79.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)
+debconf: falling back to frontend: Teletype
+Setting up nginx (1.28.3-2ubuntu1.12) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+root@bd2cc02c98aa:/# service nginx start
+ * Starting nginx nginx                                                                      [ OK ] 
+root@bd2cc02c98aa:/#
+
+attach/exec 관찰한 차이점
+docker attach 를 사용해 봤는데 프롬프트가 멈추고 조작을 할 수 없었다.
+알고보니 입력과 명령어는 전달되고 있으니 셀을 열어주지 않기 떄문에 보이지 않는
+(No Echo)상태일 뿐이었다. 보면서 할 수 있는 exec사용을 지향하는게 좋을 것 같다.
+```
 
 ### dockerfile 기반 커스텀 이미지
 
