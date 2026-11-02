@@ -74,7 +74,7 @@ Docker 및 Git 버전
 
 - [9. Docker 볼륨 영속성 검증](./기능%20요구%20사항%20증빙%20자료/9.%20볼륨%20영속성%20검증.log)
 
-'''powershell
+```powershell
 PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker ps
 CONTAINER ID   IMAGE     COMMAND            CREATED         STATUS         PORTS                                     NAMES
 38dc20f39f26   ubuntu    "sleep infinity"   9 minutes ago   Up 9 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   serene_allen
@@ -152,7 +152,7 @@ drwxrwxrwx 1 101  101  4096 Oct 31 10:09  .git
 -rw-r--r-- 1 root root  615 Oct 31 09:33  index.nginx-debian.html
 drwxrwxrwx 1 101  101  4096 Oct 31 10:08 ''$'\352\270\260\353\212\245'' '$'\354\232\224\352\265\254'' '$'\354\202\254\355\225\255'' '$'\354\246\235\353\271\231'' '$'\354\236\220\353\243\214'
 root@5f31696b2eac:/var/www/html#
-'''
+```
 
 ### Git 설정 및 GitHub 연동
 
