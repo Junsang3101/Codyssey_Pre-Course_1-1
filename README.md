@@ -1,14 +1,32 @@
 ## 1. 프로젝트 개요
 
+**프로젝트 목표**
 본 프로젝트는 개발 워크스테이션 세팅 미션의 일환으로 Linux CLI(터미널), Docker(컨테이너), Git/GitHub(버전 관리 및 협업 도구)를 함께 사용해 누구나 같은 방식으로 실행하고 디버깅할 수 있는 환경을 구성하는 것을 목표로 합니다.
+
+**프로젝트 구조**
+Docker Compose로 웹 서버, Flask 애플리케이션, Redis 데이터베이스를 함께 실행합니다.  
+
+- **web**: Ubuntu와 Nginx로 구성되어 웹 페이지를 제공하고 API 요청을 Flask 앱으로 전달합니다.
+- **app**: Python과 Flask로 방문 횟수 API를 처리합니다.
+- **redis**: 방문 횟수를 저장합니다.
+
+브라우저가 `http://localhost:8080`에 접속하면 Nginx가 `index.html`을 전달합니다. 페이지 안의 JavaScript는 `/api/count`를 요청하고,  
+Nginx는 이 요청을 Flask의 `/count` 경로로 전달합니다. Flask는 Redis의 `visits` 값을 1 증가시킨 뒤 결과를 브라우저에 돌려줍니다.
+
+요청 흐름은 다음과 같습니다.
+
+브라우저 → Nginx(web) → Flask(app) → Redis(redis) 
+
+
+**프로젝트 실행 방법**
+프로젝트가 있는 프롬프트(터미널) `~\Codyssey_Pre-Course_1-1>`에서 `docker compose up -d --build` 한 후 `http://localhost:8080`에 접속한다.
 
 ## 2. 실행 환경
 
 - OS: Windows 11
-- Shell: CMD(Command Prompt), PowerShell
+- Shell: PowerShell
 - Docker: Client 29.9.2, Server 29.9.2
 - Git: 2.56.0.windows.4
-- 상황에 따라 여러 셸을 사용했습니다.
 
 ## 3. 수행 항목 체크리스트
 
