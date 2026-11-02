@@ -18,7 +18,7 @@ Nginx는 이 요청을 Flask의 `/count` 경로로 전달합니다. Flask는 Red
 브라우저 → Nginx(web) → Flask(app) → Redis(redis) 
 
 
-**프로젝트 실행 방법**
+**프로젝트 실행 방법**  
 프로젝트가 있는 프롬프트(터미널) `~\Codyssey_Pre-Course_1-1>`에서 `docker compose up -d --build` 한 후 `http://localhost:8080`에 접속한다.
 
 ## 2. 실행 환경
