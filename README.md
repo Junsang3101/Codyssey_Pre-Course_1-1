@@ -73,7 +73,9 @@ Docker 및 Git 버전
 ### docker 볼륨 영속성 검증
 
 - [9. Docker 볼륨 영속성 검증](./기능%20요구%20사항%20증빙%20자료/9.%20볼륨%20영속성%20검증.log)
-'''PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker ps
+
+'''powershell
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker ps
 CONTAINER ID   IMAGE     COMMAND            CREATED         STATUS         PORTS                                     NAMES
 38dc20f39f26   ubuntu    "sleep infinity"   9 minutes ago   Up 9 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   serene_allen
 PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker exec -it 38d bash
