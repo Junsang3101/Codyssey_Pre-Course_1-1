@@ -6,7 +6,7 @@ services:
       - "8080:80"
     volumes:
       - ./src:/var/www/html
-      - ./proxy/deafult.conf:/etc/nginx/sites-enabled/deafult:ro
+      - ./proxy/default.conf:/etc/nginx/sites-enabled/default:ro
     depends_on:
       - app
 
@@ -19,7 +19,7 @@ services:
   
   # redis 기본 포트: 6379
   redis:
-    image: redis:8.1
+    image: redis
     volumes:
       - redis-data:/data
 

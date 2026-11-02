@@ -1,0 +1,28 @@
+root@7aebb4fd4b57:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@7aebb4fd4b57:/# cd home
+root@7aebb4fd4b57:/home# ls
+ubuntu
+root@7aebb4fd4b57:/home# mkdir testdir
+root@7aebb4fd4b57:/home# cd testdir/
+root@7aebb4fd4b57:/home/testdir# touch testfile
+root@7aebb4fd4b57:/home/testdir# mv testfile testfile1
+root@7aebb4fd4b57:/home/testdir# cp testfile1 testfile2
+root@7aebb4fd4b57:/home/testdir# ls -al
+total 8
+drwxr-xr-x 2 root root 4096 Nov  2 10:35 .
+drwxr-xr-x 4 root root 4096 Nov  2 10:35 ..
+-rw-r--r-- 1 root root    0 Nov  2 10:35 testfile1
+-rw-r--r-- 1 root root    0 Nov  2 10:35 testfile2
+root@7aebb4fd4b57:/home/testdir# cd ..
+root@7aebb4fd4b57:/home# rm -rf testdir
+root@7aebb4fd4b57:/home# ls 0al
+ls: cannot access '0al': No such file or directory
+root@7aebb4fd4b57:/home# ls -al
+total 12
+drwxr-xr-x 3 root   root   4096 Nov  2 10:36 .
+drwxr-xr-x 1 root   root   4096 Nov  2 10:34 ..
+drwxr-x--- 2 ubuntu ubuntu 4096 Nov  2 10:34 ubuntu
+root@7aebb4fd4b57:/home# pwd
+/home
+root@7aebb4fd4b57:/home# 
