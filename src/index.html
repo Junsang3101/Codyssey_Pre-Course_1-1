@@ -7,6 +7,23 @@
 
     <body>
         <h1>Hello World!</h1>
-        <p>도커로 실행한 웹 페이지입니다.aaa</p>
+        <p>도커로 실행한 웹 페이지입니다.</p>
+        <p>방문 횟수: <span id="visit-count">불러오는 중...</span></p>
+
+        <script>
+            fetch("/api/count")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("방문 횟수를 불러오지 못했습니다.");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById("visit-count").textContent = data.visit;
+                })
+                .catch(error => {
+                    document.getElementById("visit-count").textContent = error.message;
+                });
+        </script>
     </body>
 </html>

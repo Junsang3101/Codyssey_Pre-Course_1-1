@@ -13,8 +13,8 @@ def hello():
 
 @app.route("/count")
 def count():
-    visit = r.inc("visits")
-    return jsonify(visit=visits, container=socket.gethostname())
+    visit = r.incr("visits")
+    return jsonify(visit=visit, container=socket.gethostname())
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

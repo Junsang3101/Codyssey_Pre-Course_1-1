@@ -1,0 +1,15 @@
+PS E:\git_repo\Codyssey_Pre-Course_1-1\proxy> docker compose ps
+NAME                              IMAGE                         COMMAND                   SERVICE   CREATED         STATUS         PORTS
+codyssey_pre-course_1-1-app-1     codyssey_pre-course_1-1-app   "python app.py"           app       8 seconds ago   Up 7 seconds   5000/tcp
+codyssey_pre-course_1-1-redis-1   redis                         "docker-entrypoint.s…"   redis     8 seconds ago   Up 7 seconds   6379/tcp
+ubuntu-web-test                   codyssey_pre-course_1-1-web   "nginx -g 'daemon of…"   web       8 seconds ago   Up 7 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp
+PS E:\git_repo\Codyssey_Pre-Course_1-1\proxy> docker compose logs web
+ubuntu-web-test  | 172.18.0.1 - - [02/Nov/2026:15:38:22 +0000] "GET / HTTP/1.1" 304 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+ubuntu-web-test  | 172.18.0.1 - - [02/Nov/2026:15:38:22 +0000] "GET /api/count HTTP/1.1" 200 40 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+PS E:\git_repo\Codyssey_Pre-Course_1-1\proxy> docker compose down
+[+] down 4/4
+ ✔ Container ubuntu-web-test                 Removed                                          0.3s
+ ✔ Container codyssey_pre-course_1-1-app-1   Removed                                          3.2s
+ ✔ Container codyssey_pre-course_1-1-redis-1 Removed                                          0.3s
+ ✔ Network codyssey_pre-course_1-1_default   Removed                                          0.2s
+PS E:\git_repo\Codyssey_Pre-Course_1-1\proxy> 

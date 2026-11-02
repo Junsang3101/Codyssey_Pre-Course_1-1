@@ -1,0 +1,73 @@
+PS E:\git_repo\Codyssey_Pre-Course_1-1\proxy> curl http://localhost:8080/api/count
+
+보안 경고: 스크립트 실행 위험                                                                                                   
+Invoke-WebRequest는 웹 페이지의 내용을 구문 분석합니다. 페이지를 구문 분석할 때 웹 페이지 내 스크립트 코드가 실행될 수          
+있습니다.                                                                                                                       
+      권장 조치:                                                                                                                
+      -UseBasicParsing 스위치를 사용하여 스크립트 코드 실행을 방지합니다.
+
+      계속하시겠어요?
+    
+[Y] 예(Y)  [A] 모두 예(A)  [N] 아니요(N)  [L] 모두 아니요(L)  [S] 일시 중단(S)  [?] 도움말 (기본값은 "N"): y
+
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : {"container":"ba73920cb7b0","visit":13}
+                    
+RawContent        : HTTP/1.1 200 OK
+                    Connection: keep-alive
+                    Content-Length: 40
+                    Content-Type: application/json
+                    Date: Mon, 02 Nov 2026 15:14:10 GMT
+                    Server: nginx/1.24.0 (Ubuntu)
+                    
+                    {"container":"ba73920cb7b0","visit":1...
+Forms             : {}
+Headers           : {[Connection, keep-alive], [Content-Length, 40], [Content-Type, application/json], [Date, Mon, 02 Nov 2026 
+                    15:14:10 GMT]...}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : System.__ComObject
+RawContentLength  : 40
+
+
+ 
+PS E:\git_repo\Codyssey_Pre-Course_1-1\proxy> curl http://localhost:8080/api/count
+
+보안 경고: 스크립트 실행 위험                                                                                                   
+Invoke-WebRequest는 웹 페이지의 내용을 구문 분석합니다. 페이지를 구문 분석할 때 웹 페이지 내 스크립트 코드가 실행될 수          
+있습니다.                                                                                                                       
+      권장 조치:                                                                                                                
+      -UseBasicParsing 스위치를 사용하여 스크립트 코드 실행을 방지합니다.
+
+      계속하시겠어요?
+    
+[Y] 예(Y)  [A] 모두 예(A)  [N] 아니요(N)  [L] 모두 아니요(L)  [S] 일시 중단(S)  [?] 도움말 (기본값은 "N"): y
+
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : {"container":"ba73920cb7b0","visit":14}
+                    
+RawContent        : HTTP/1.1 200 OK
+                    Connection: keep-alive
+                    Content-Length: 40
+                    Content-Type: application/json
+                    Date: Mon, 02 Nov 2026 15:14:26 GMT
+                    Server: nginx/1.24.0 (Ubuntu)
+                    
+                    {"container":"ba73920cb7b0","visit":1...
+Forms             : {}
+Headers           : {[Connection, keep-alive], [Content-Length, 40], [Content-Type, application/json], [Date, Mon, 02 Nov 2026 
+                    15:14:26 GMT]...}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : System.__ComObject
+RawContentLength  : 40
+
+
+
+PS E:\git_repo\Codyssey_Pre-Course_1-1\proxy> 

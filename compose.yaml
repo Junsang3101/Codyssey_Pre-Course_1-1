@@ -3,25 +3,31 @@ services:
     build: .
     container_name: ubuntu-web-test
     ports:
-      - "8080:80"
+      - "8080:${WEB_PORT}"
     volumes:
       - ./src:/var/www/html
       - ./proxy/default.conf:/etc/nginx/sites-enabled/default:ro
     depends_on:
       - app
+    environment:
+      - WEB_PORT=${WEB_PORT}
 
   app:
     build: ./app
     expose: 
-      - "5000"
+      - "${APP_PORT}"
     depends_on:
       - redis
-  
+    environment:
+      - FLASK_DEBUG=${FLASK_DEBUG}
+      - APP_PORT=${APP_PORT}
+
   # redis 기본 포트: 6379
   redis:
     image: redis
     volumes:
       - redis-data:/data
+    entrypoint: ["redis-server", "--appendonly", "yes"]
 
 volumes:
   redis-data:
