@@ -1,0 +1,23 @@
+PS E:\git_repo\Codyssey_Pre-Course_1-1> docker build -t testimgae .
+[+] Building 0.9s (9/9) FINISHED                                                                                                                           docker:desktop-linux
+ => [internal] load build definition from dockerfile                                                                                                                       0.4s
+ => => transferring dockerfile: 850B                                                                                                                                       0.4s
+ => [internal] load metadata for docker.io/library/ubuntu:24.04                                                                                                            0.1s
+ => [internal] load .dockerignore                                                                                                                                          0.0s
+ => => transferring context: 2B                                                                                                                                            0.0s
+ => [1/4] FROM docker.io/library/ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852                                                      0.0s
+ => => resolve docker.io/library/ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852                                                      0.0s
+ => [internal] load build context                                                                                                                                          0.0s
+ => => transferring context: 59B                                                                                                                                           0.0s
+ => CACHED [2/4] RUN apt-get update && apt-get install -y --no-install-recommends nginx && rm -rf /var/lib/apt/lists/*                                                     0.0s
+ => CACHED [3/4] RUN ln -sf /dev/stdout /var/log/nginx/access.log  && ln -sf /dev/stderr /var/log/nginx/error.log                                                          0.0s
+ => CACHED [4/4] COPY --chown=www-data:www-data src/ /var/www/html/                                                                                                        0.0s
+ => exporting to image                                                                                                                                                     0.1s
+ => => exporting layers                                                                                                                                                    0.0s
+ => => exporting manifest sha256:9620032ce64dfbe2dc9a0e02c9d936cbab84e6c7f5158cf96c15946512626674                                                                          0.0s
+ => => exporting config sha256:dfe1fcb052c1a4484490823509985796372b35a1c0a86ed505e2e5e39f71453b                                                                            0.0s
+ => => exporting attestation manifest sha256:f63f9717a37d6712aa05bbf39cdb4a3a52d62655b0d1df39e9be78541853a45a                                                              0.0s
+ => => exporting manifest list sha256:1fb78604fafa22aff15c86d3fb9cf2b2cd9b2ae9581e4874de022306e6a19adc                                                                     0.0s
+ => => naming to docker.io/library/testimgae:latest                                                                                                                        0.0s
+ => => unpacking to docker.io/library/testimgae:latest                                                                                                                     0.0s
+PS E:\git_repo\Codyssey_Pre-Course_1-1> 

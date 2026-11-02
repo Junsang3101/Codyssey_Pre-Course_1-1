@@ -2,49 +2,40 @@
 
 본 프로젝트는 개발 워크스테이션 세팅 미션의 일환으로 리눅스 CLI(터미널), Docker(컨테이너), Git/GitHub(버전 관리 및 협업, 형상 관리 도구)를 함께 사용해 누구나 같은 방식으로 실행, 배포, 디버깅 할 수 있는 환경 구성을 하는 것을 목표로 합니다
 
-## 실행 환경
+## 2. 실행 환경
 
 - OS: windows 11
-- Shell: CMD(Command Prompt), PowerShell, Bash(컨테이너)
+- Shell: CMD(Command Prompt), PowerShell
 - Docker: Client 29.9.2, Server 29.9.2
 - Git: 2.56.0.windows.4
 * 상황에 따라 Shell을 여러가지 사용하였음
 
-## 수행 항목 체크리스트
+## 3. 수행 항목 체크리스트
 
-- [ ] 1. 트러블 슈팅 2건
-- [x] 2. 터미널 조작 로그 기록
-- [x] 3. 권한 변경 실습
-- [x] 4. Docker 기본 점검
-- [x] 5. Docker 기본 운영 명령
-- [x] 6. 컨테이너 실행
-- [x] 7. 기존 dockerfile 기반 커스텀 이미지 제작
-- [x] 8. 포트 매핑 및 접속
-- [ ] 9. Docker 볼륨 영속성 검증
-- [x] 10. Git 설정 및 GitHub 연동
+- [x] 3-1. 터미널 조작 로그 기록
+- [x] 3-2. 권한 변경 실습
+- [x] 3-3. Docker 기본 점검
+- [x] 3-3. Docker 기본 운영 명령
+- [x] 3-4. 컨테이너 실행
+- [x] 3-5. 기존 dockerfile 기반 커스텀 이미지 제작
+- [x] 3-6. 포트 매핑 및 접속
+- [x] 3-7. Docker 볼륨 영속성 검증
+- [x] 3-8. Git 설정 및 GitHub 연동
+- [x] 3-9. Docker Compose 기초
+- [ ] 3-10. Docker Compose 멀티 컨테이너
+- [ ] 3-11. Compose 운영 명령어 습득
+- [ ] 3-12. 환경 변수 활용
+- [x] 3-13. GitHub SSH 키 설정
+- [ ] 3-14. 트러블 슈팅 2건
 
-## 보너스 과제 (선택)
+**3-1. 터미널 조작 로그 기록**
 
-- [x] 1. Docker Compose 기초
-- [ ] 2. Docker Compose 멀티 컨테이너
-- [ ] 3. Compose 운영 명령어 습득
-- [ ] 4. 환경 변수 활용
-- [x] 5. GitHub SSH 키 설정
+ubuntu컨테이너의 터미널에 `docker exec -it` 로 진입해 `pwd`, `cd`, `mkdir`, `touch`, `rm -rf`, `ls -al`, `cp`, `mv`
+를 사용해 기본적인 터미널 조작을 익혔습니다.
 
-## 실행 환경 
+- [전체 실행 로그](/기능%20요구%20사항%20증빙%20자료/터미널%20조작%20로그%20기록.log)
 
-Docker 및 Git 버전
-![실행환경2: docker 및 Git 버전](./기능%20요구%20사항%20증빙%20자료/1-2.png)
-
-## 터미널 조작 로그 기록
-
-**터미널로 폴더와 파일을 만들고 이동/복사/삭제 등을 해봤습니다.**
-
-ubuntu컨테이너의 터미널에 `docker exec -it` 로 진입해 `pwd`, `cd`, `mkdir`, `touch`, `rm -rf`, `ls -al`, `cp`, `mv`를 사용해 
-
-[전체 실행 로그](/기능%20요구%20사항%20증빙%20자료/터미널%20조작%20로그%20기록.log)
-
-## 권한 변경 실습
+**3-2. 권한 변경 실습**
 
 테스트 폴더와 파일의 사용자 권한을 `chmod`를 사용해 수정해봤습니다.
 
@@ -70,130 +61,49 @@ drwxr-x--- 2 ubuntu ubuntu 4096 Nov  2 10:34 ubuntu
 root@7aebb4fd4b57:/home# 
 ```
 
-## Docker 기본 점검
+**3-3. Docker 기본 점검**
 
 `docker version` `docker info`를 사용해 Docker 버전과 데몬 동작 여부를 확인하였다.
 
-[전체 실행 로그](./기능%20요구%20사항%20증빙%20자료/Docker%20기본%20점검.log)
+- [전체 실행 로그](./기능%20요구%20사항%20증빙%20자료/Docker%20기본%20점검.log)
 
-## Docker 기본 운영 명령
+**3-4. Docker 기본 운영 명령**
 
 `docker ps -a`, `docker images`, `docker stats`, `docker logs`같은 기본 도커 명령어를 수행했다.
 
 - [전체 실행 로그](./기능%20요구%20사항%20증빙%20자료/Docker%20기분%20운영%20명령%20수행.log)
 
 
-## 컨테이너 실행
+**3-5. 컨테이너 실행**
 
-- [6. 컨테이너 실행](./기능%20요구%20사항%20증빙%20자료/6.%20컨테이너%20실행%20실습.log)
 ```powershell
-PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker run -d -p 8080:80 --name ubuntu-web-test -v ${pwd}:/var/www/html ubuntu sleep infinity
-bd2cc02c98aa6741010c3b5a5a5309dfffebf72d1e395ced1c64e4378f4a4691
-PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker ps
-CONTAINER ID   IMAGE     COMMAND            CREATED          STATUS          PORTS                   NAMES
-bd2cc02c98aa   ubuntu    "sleep infinity"   39 seconds ago   Up 38 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   ubuntu-web-test
-PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker exec -it bd2
-docker: 'docker exec' requires at least 2 arguments
-
-Usage:  docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
-
-See 'docker exec --help' for more information
+PS E:\git_repo\Codyssey_Pre-Course_1-1> docker ps          
+CONTAINER ID   IMAGE                         COMMAND                   CREATED          STATUS          PORTS                                     NAMES
+308a1c66ebd9   ubuntu                        "sleep infinity"          25 minutes ago   Up 25 minutes                                             NewTestContainer
+13d34a54afd0   codyssey_pre-course_1-1-web   "nginx -g 'daemon of…"   39 minutes ago   Up 37 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   ubuntu-web-test
+c2d1d86f5c2e   codyssey_pre-course_1-1-app   "python app.py"           39 minutes ago   Up 37 minutes   5000/tcp                                  codyssey_pre-course_1-1-app-1
+ca346ef3f4e9   redis                         "docker-entrypoint.s…"   39 minutes ago   Up 37 minutes   6379/tcp                                  codyssey_pre-course_1-1-redis-1
+PS E:\git_repo\Codyssey_Pre-Course_1-1> docker exec -it 308 bash
+root@308a1c66ebd9:/# ls     
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@308a1c66ebd9:/# echo testttttttttttttttt~~~~       
+testttttttttttttttt~~~~
+root@308a1c66ebd9:/# exit
+exit
 
 What's next:
-    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug bd2
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug 308
     Learn more at https://docs.docker.com/go/debug-cli/
-PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker exec -it bd2 bash
-root@bd2cc02c98aa:/# apt-get update && apt-get install -y nginx
-Get:1 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
-Get:2 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]                     
-Get:3 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [258 kB]
-Get:4 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [609 kB]
-Get:5 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
-Get:6 http://security.ubuntu.com/ubuntu resolute-security/multiverse amd64 Packages [24.6 kB]
-Get:7 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [746 kB]   
-Get:8 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]            
-Get:9 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [189 kB]
-Get:10 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [352 kB]
-Get:11 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1874 kB]
-Get:12 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [20.1 MB]
-Get:13 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [991 kB]              
-Get:14 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [472 kB]          
-Get:15 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [668 kB]        
-Get:16 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [26.1 kB]       
-Get:17 http://archive.ubuntu.com/ubuntu resolute-backports/universe amd64 Packages [3308 B]        
-Fetched 26.9 MB in 7s (3675 kB/s)                                                                  
-Reading package lists... Done
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-Solving dependencies... Done
-The following additional packages will be installed:
-  nginx-common
-Suggested packages:
-  fcgiwrap nginx-doc ssl-cert
-The following NEW packages will be installed:
-  nginx nginx-common
-0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
-Need to get 656 kB of archives.
-After this operation, 1864 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 nginx-common all 1.28.3-2ubuntu1.12 [38.2 kB]
-Get:2 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 nginx amd64 1.28.3-2ubuntu1.12 [618 kB]
-Fetched 656 kB in 2s (291 kB/s)
-debconf: unable to initialize frontend: Dialog
-debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 79, <STDIN> line 2.)
-debconf: falling back to frontend: Readline
-debconf: unable to initialize frontend: Readline
-debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 2.)
-debconf: falling back to frontend: Teletype
-Preconfiguring packages ...
-Selecting previously unselected package nginx-common.
-(Reading database ... 7789 files and directories currently installed.)
-Preparing to unpack .../nginx-common_1.28.3-2ubuntu1.12_all.deb ...
-Unpacking nginx-common (1.28.3-2ubuntu1.12) ...
-Selecting previously unselected package nginx.
-Preparing to unpack .../nginx_1.28.3-2ubuntu1.12_amd64.deb ...
-Unpacking nginx (1.28.3-2ubuntu1.12) ...
-Setting up nginx-common (1.28.3-2ubuntu1.12) ...
-debconf: unable to initialize frontend: Dialog
-debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 79.)
-debconf: falling back to frontend: Readline
-debconf: unable to initialize frontend: Readline
-debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)
-debconf: falling back to frontend: Teletype
-Setting up nginx (1.28.3-2ubuntu1.12) ...
-invoke-rc.d: could not determine current runlevel
-invoke-rc.d: policy-rc.d denied execution of start.
-root@bd2cc02c98aa:/# service nginx start
- * Starting nginx nginx                                                                      [ OK ] 
-root@bd2cc02c98aa:/#
+PS E:\git_repo\Codyssey_Pre-Course_1-1>  
 ```
 
-## dockerfile 기반 커스텀 이미지
+**3-6. dockerfile 기반 커스텀 이미지**
 
-```powershell
-PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker build -t junsang-web_01:1.0 .
-[+] Building 0.3s (7/7) FINISHED                                                               docker:desktop-linux
- => [internal] load build definition from dockerfile                                                           0.0s
- => => transferring dockerfile: 298B                                                                           0.0s
- => [internal] load metadata for docker.io/library/nginx:alpine                                                 0.0s
- => [internal] load .dockerignore                                                                              0.0s
- => => transferring context: 2B                                                                                0.0s
- => [internal] load build context                                                                              0.0s
- => => transferring context: 32B                                                                               0.0s
- => [1/2] FROM docker.io/library/nginx:alpine@sha256:785835ea65db4bba6f021acc0f3be91b0fef76a53fe41f8588c6698d2aed0606  0.0s
- => => resolve docker.io/library/nginx:alpine@sha256:785835ea65db4bba6f021acc0f3be91b0fef76a53fe41f8588c6698d2aed0606  0.0s
- => CACHED [2/2] COPY index.html /usr/share/nginx/html/index.html                                               0.0s
- => exporting to image                                                                                         0.1s
- => => exporting layers                                                                                        0.0s
- => => exporting manifest sha256:a7e0087a4a55ef79cf9d40c57f2ad7d7e156383f84a8ae3ce73b34d8e476de40               0.0s
- => => exporting config sha256:d40c7b1017b2ebd590ab755513a71871ceeb82fee0e13c97b3482b07f5d5296                  0.0s
- => => exporting attestation manifest sha256:60783730777294b8eb74c4c50fa25d1473bee1be262e323e68aae3081a44b657    0.0s
- => => exporting manifest list sha256:1cf84192e3c9c5cce5a0b99e30eaa9d00a71b75ccd69c18e210e7a77df75af89          0.0s
- => => naming to docker.io/library/junsang-web_01:1.0                                                          0.0s
- => => unpacking to docker.io/library/junsang-web_01:1.0                                                       0.0s
-```
+`docker build` 명령어를 통해 `dockerfile`을 기반으로 커스텀 이미지를 만들었다.
 
-## 포트 매핑 및 접속
+- [전체 실행 로그](기능%20요구%20사항%20증빙%20자료/커스텀%20이미지%20생성.log)
+
+**3-7. 포트 매핑 및 접속**
 
 `curl http://localhost:8080`을 통해 호스트에서 접속해봤다.
 
@@ -217,45 +127,21 @@ C:\Users\User>curl http://localhost:8080
 C:\Users\User>
 ```
 
-## docker 볼륨 영속성 검증
+**docker 볼륨 영속성 검증**
 
+새 도커 볼륨을 만들고 컨테이너를 만들 때 도커 볼륨과 컨테이너 경로를 연결하였고. 지정된 경로에 테스트 파일을 생성하였다.
+그 후 컨테이너를 삭제한 다음 다시 볼륨과 연결하여 새 컨테이너를 만들었더니 지정된 경로에 테스트 파일이 남아있었다.
 
+- [전체 실행 로그](기능%20요구%20사항%20증빙%20자료/Docker%20volume%20영속성%20검증.log)
 
-## Git 설정 및 GitHub 연동
+**Git 설정 및 GitHub 연동**
 
-```powershell
-PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git config --list
-diff.astextplain.textconv=astextplain
-filter.lfs.clean=git-lfs clean -- %f
-filter.lfs.smudge=git-lfs smudge -- %f
-filter.lfs.process=git-lfs filter-process
-filter.lfs.required=true
-http.sslbackend=schannel
-core.autocrlf=true
-core.fscache=true
-core.symlinks=false
-pull.rebase=false
-credential.helper=manager
-credential.https://dev.azure.com.usehttppath=true
-init.defaultbranch=master
-user.name=lee soyeon
-user.email=thdu9067@naver.com
-core.repositoryformatversion=0
-core.filemode=false
-core.bare=false
-core.logallrefupdates=true
-core.symlinks=false
-core.ignorecase=true
-remote.origin.url=https://junsang3101@github.com/junsang3101/Codyssey_Pre-Course_1-1.git
-remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
-branch.main.remote=origin
-branch.main.merge=refs/heads/main
-branch.main.vscode-merge-base=origin/main
-user.name=junsang3101
-user.email=3101junsang@gmail.com
-```
+`git clone` 으로 repository(저장소)를 로컬 환경으로 다운받아 `git add`, `git commit`, `git push` 등을 통해 커밋하고 반영되는 것을 확인하였다. 
 
-# 보너스 과제 증빙자료
+- [전체 실행 로그](기능%20요구%20사항%20증빙%20자료/Git%20설정%20및%20커밋%20로그.log)
+
+**보너스 과제 증빙자료**
+
 **1. Docker Compose 기초**
 
 compose.yaml 로 실행 설정을 분리해 빌드해봤다. 컨테이너를 직접 관리하지 않고 `docker compose`를 사용하면, 관련 컨테이너들을 Docker가 자동으로 관리/추적 해주기 떄문에 매우 유용하다.
@@ -296,12 +182,12 @@ PS C:\users\user\Documents\Junsang3101\Codyssey_Pre-Course_1-1>
 
 `ssh-keygen` 으로 생성한 Ed25519 SSH 키를 만들어 깃에 등록 후 로컬 환경에서 `git remote set-url`을 통해 SSH키로 인증하도록 변경하였다.
 
-[전체 실행 로그](기능%20요구%20사항%20증빙%20자료/SSH%20키%20생성%20로그.log)
-![GitHub Deplay Keys 설정 화면](./기능%20요구%20사항%20증빙%20자료/GitHub%20Deplay%20Keys%20설정%20화면.png)
+- [전체 실행 로그](기능%20요구%20사항%20증빙%20자료/SSH%20키%20생성%20로그.log)
+- ![GitHub Deplay Keys 설정 화면](./기능%20요구%20사항%20증빙%20자료/GitHub%20Deplay%20Keys%20설정%20화면.png)
 
 ## 트러블 슈팅
 
-### 1:Git SSH 키 등록 후에도 브라우저로 인증이 뜨는 문제
+**1:Git SSH 키 등록 후에도 브라우저로 인증이 뜨는 문제**
 
 - **증상**: GitHub에서 Deploy Keys를 설정한 후에도 `git push`시 브라우저로 인증창이 뜸 
 - **원인**: `git remote` 주소가 HTTPS 형식으로 남아서 SSH 키를 사용하지 않음
@@ -335,7 +221,7 @@ To github.com:Junsang3101/Codyssey_Pre-Course_1-1.git
    47a4d94..097ddbf  main -> main
 ```
 
-### 2: 
+**2:** 
 
 - **증상**:
 - **원인**:
