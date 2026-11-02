@@ -5,7 +5,7 @@
 ## 실행 환경
 
 - OS: Window 11
-- Shell: CMD(Command Prompt), PowerShell, Bash(Docker 컨테이너에서 사용)
+- Shell: CMD(Command Prompt), PowerShell, Bash(컨테이너)
 - Docker: Client 29.9.2, Server 29.9.2
 - Git: 2.56.0.windows.4
 * 상황에 따라 Shell을 여러가지 사용하였음
@@ -33,26 +33,90 @@
 
 ## 수행 항목 증빙 자료
 
-
 ### 실행 환경 
-
-컨테이너 OS 및 SHELL 종류
-![실행환경1: 컨테이너 OS 및 SHELL 종류](./기능%20요구%20사항%20증빙%20자료/1-1.png)
 
 Docker 및 Git 버전
 ![실행환경2: docker 및 Git 버전](./기능%20요구%20사항%20증빙%20자료/1-2.png)
 
 ### 터미널 조작 로그 기록
 
-![2. 터미널 조작 로그 기록](./기능%20요구%20사항%20증빙%20자료/2.%20터미널%20조작.png)
+**터미널로 폴더와 파일을 만들고 이동/복사/삭제 등을 해봤습니다.**
+
+```powershell
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker exec -it 15e sh
+/usr/share/nginx/html # ls -a
+.
+..
+.git
+README.md
+dockerfile
+dockerfile과 index.html로 이미지 빌드하기(dockerfile 실행).png
+index.html
+만든 이미지로 컨테이너 만들기(도커 볼륨으로 영속성 충족 및 바인드 마운트 반영되게 함).png
+컨테이너 내부 파일 권한 설정 바꾸기 (권한 변경 실습).png
+터미널 기본 조작 및 폴더 구성 (깃 설정 + 터미널 기본 조작 및 폴더 구성).png
+/usr/share/nginx/html # mkdir testdir
+/usr/share/nginx/html # cd testdir
+/usr/share/nginx/html/testdir # touch test
+/usr/share/nginx/html/testdir # mv test testfile
+/usr/share/nginx/html/testdir # cp testfile testfile2
+/usr/share/nginx/html/testdir # ls -a
+.       ..      testfile        testfile2
+/usr/share/nginx/html/testdir # cd ..
+/usr/share/nginx/html # rm -rf testdir
+/usr/share/nginx/html # ls -a
+.
+..
+.git
+README.md
+dockerfile
+dockerfile과 index.html로 이미지 빌드하기(dockerfile 실행).png
+index.html
+만든 이미지로 컨테이너 만들기(도커 볼륨으로 영속성 충족 및 바인드 마운트 반영되게 함).png
+컨테이너 내부 파일 권한 설정 바꾸기 (권한 변경 실습).png
+터미널 기본 조작 및 폴더 구성 (깃 설정 + 터미널 기본 조작 및 폴더 구성).png
+```
 
 ### 권한 변경 실습
 
-![3. 권한 실습](./기능%20요구%20사항%20증빙%20자료/3.%20권한%20실습.png)
+**테스트 폴더와 파일의 사용자 권한을 수정해봤습니다.**
+
+```
+/usr/share/nginx/html # mkdir testdir
+/usr/share/nginx/html # touch testfile
+/usr/share/nginx/html # ls -al
+total 8
+drwxrwxrwx    1 nginx    nginx         4096 Oct 31 08:51 .
+drwxr-xr-x    1 root     root          4096 Oct 21 22:47 ..
+drwxrwxrwx    1 nginx    nginx         4096 Oct 31 06:21 .git
+-rwxrwxrwx    1 nginx    nginx         1156 Oct 31 08:11 README.md
+-rwxrwxrwx    1 nginx    nginx          503 Oct 31 07:52 dockerfile
+drwxrwxrwx    1 nginx    nginx         4096 Oct 31 08:36 img
+-rwxrwxrwx    1 nginx    nginx          285 Oct 31 07:12 index.html
+drwxr-xr-x    1 root     root          4096 Oct 31 08:51 testdir
+-rw-r--r--    1 root     root             0 Oct 31 08:51 testfile
+/usr/share/nginx/html # chmod 777 testdir
+/usr/share/nginx/html # chmod 777 testfile
+/usr/share/nginx/html # ls -al
+total 8
+drwxrwxrwx    1 nginx    nginx         4096 Oct 31 08:51 .
+drwxr-xr-x    1 root     root          4096 Oct 21 22:47 ..
+drwxrwxrwx    1 nginx    nginx         4096 Oct 31 06:21 .git
+-rwxrwxrwx    1 nginx    nginx         1156 Oct 31 08:11 README.md
+-rwxrwxrwx    1 nginx    nginx          503 Oct 31 07:52 dockerfile
+drwxrwxrwx    1 nginx    nginx         4096 Oct 31 08:36 img
+-rwxrwxrwx    1 nginx    nginx          285 Oct 31 07:12 index.html
+drwxr-xr-x    1 root     root          4096 Oct 31 08:51 testdir
+-rw-r--r--    1 root     root             0 Oct 31 08:51 testfile
+/usr/share/nginx/html #
+```
 
 ### Docker 기본 점검
 
 - [4. Docker 기본 점검](./기능%20요구%20사항%20증빙%20자료/4.%20docker기본점검.log)
+```
+* 프롬프트 입력이 잘려 재작성 예정
+```
 
 ### Docker 기본 운영 명령
 
@@ -187,22 +251,60 @@ invoke-rc.d: policy-rc.d denied execution of start.
 root@bd2cc02c98aa:/# service nginx start
  * Starting nginx nginx                                                                      [ OK ] 
 root@bd2cc02c98aa:/#
-
-attach/exec 관찰한 차이점
-docker attach 를 사용해 봤는데 프롬프트가 멈추고 조작을 할 수 없었다.
-알고보니 입력과 명령어는 전달되고 있으니 셀을 열어주지 않기 떄문에 보이지 않는
-(No Echo)상태일 뿐이었다. 보면서 할 수 있는 exec사용을 지향하는게 좋을 것 같다.
 ```
 
 ### dockerfile 기반 커스텀 이미지
 
-![7. dockerfile 기반 사설 이미지](./기능%20요구%20사항%20증빙%20자료/7.%20dockerfile%20기반%20커스텀%20이미지%20제작.png)
+```powershell
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker build -t junsang-web_01:1.0 .
+[+] Building 0.3s (7/7) FINISHED                                                               docker:desktop-linux
+ => [internal] load build definition from dockerfile                                                           0.0s
+ => => transferring dockerfile: 298B                                                                           0.0s
+ => [internal] load metadata for docker.io/library/nginx:alpine                                                 0.0s
+ => [internal] load .dockerignore                                                                              0.0s
+ => => transferring context: 2B                                                                                0.0s
+ => [internal] load build context                                                                              0.0s
+ => => transferring context: 32B                                                                               0.0s
+ => [1/2] FROM docker.io/library/nginx:alpine@sha256:785835ea65db4bba6f021acc0f3be91b0fef76a53fe41f8588c6698d2aed0606  0.0s
+ => => resolve docker.io/library/nginx:alpine@sha256:785835ea65db4bba6f021acc0f3be91b0fef76a53fe41f8588c6698d2aed0606  0.0s
+ => CACHED [2/2] COPY index.html /usr/share/nginx/html/index.html                                               0.0s
+ => exporting to image                                                                                         0.1s
+ => => exporting layers                                                                                        0.0s
+ => => exporting manifest sha256:a7e0087a4a55ef79cf9d40c57f2ad7d7e156383f84a8ae3ce73b34d8e476de40               0.0s
+ => => exporting config sha256:d40c7b1017b2ebd590ab755513a71871ceeb82fee0e13c97b3482b07f5d5296                  0.0s
+ => => exporting attestation manifest sha256:60783730777294b8eb74c4c50fa25d1473bee1be262e323e68aae3081a44b657    0.0s
+ => => exporting manifest list sha256:1cf84192e3c9c5cce5a0b99e30eaa9d00a71b75ccd69c18e210e7a77df75af89          0.0s
+ => => naming to docker.io/library/junsang-web_01:1.0                                                          0.0s
+ => => unpacking to docker.io/library/junsang-web_01:1.0                                                       0.0s
+```
 
 ### 포트 매핑 및 접속
 
-![8. 포트 매핑 및 접속](./기능%20요구%20사항%20증빙%20자료/8.%20포트%20매핑%20및%20접속%20증거.png)
+`curl http://localhost:8000`을 통해 호스트에서 접속해봤다.
+
+```cmd
+Microsoft Windows [Version 10.0.26300.9711]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\User>curl http://localhost:8080
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>코디세이 입학 연수 1-1 Hello World!</title>
+    </head>
+
+    <body>
+        <h1>Hello World!</h1>
+        <p>도커로 실행한 웹 페이지입니다.</p>
+    </body>
+</html>
+C:\Users\User>
+```
 
 ### docker 볼륨 영속성 검증
+
+`docker run`으로 빌드할 때 `-v`옵션을 사용해 볼륨을 바인드 마운트 해서 영속성 컨테이너를 삭제 후 재 빌드 후에도 내용이 남았음을 확인하였다.
 
 - [9. Docker 볼륨 영속성 검증](./기능%20요구%20사항%20증빙%20자료/9.%20볼륨%20영속성%20검증.log)
 
@@ -288,19 +390,131 @@ root@5f31696b2eac:/var/www/html#
 
 ### Git 설정 및 GitHub 연동
 
-![10. Git 설정 및 GitHub연동](./기능%20요구%20사항%20증빙%20자료/10.%20git%20설정%20및%20github%20연동.png)
+```powershell
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=schannel
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=lee soyeon
+user.email=thdu9067@naver.com
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+remote.origin.url=https://junsang3101@github.com/junsang3101/Codyssey_Pre-Course_1-1.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+branch.main.vscode-merge-base=origin/main
+user.name=junsang3101
+user.email=3101junsang@gmail.com
+```
 
 ### 보너스 과제 증빙자료
 
 ### Docker Compose 기초
 
-![11. Docker Compose 기초](./기능%20요구%20사항%20증빙%20자료/11.%20Docker%20Compose%20기초.png)
+compose.yaml 로 실행 설정을 분리해 빌드해봤다. 도커 컴포즈를 활용하면 도커가 자동으로 관련 컨테이너를 추적/관리 해주기 때문에 용이하다.
+
+```powershell
+PS C:\users\user\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker compose up -d --build
+[+] Building 1.7s (11/11) FINISHED
+ => [internal] load local bake definitions                                                                    0.0s
+ => => reading from stdin 601B                                                                                0.0s
+ => [internal] load build definition from dockerfile                                                          0.0s
+ => => transferring dockerfile: 366B                                                                          0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:24.04                                               1.3s
+ => [auth] library/ubuntu:pull token for registry-1.docker.io                                                   0.0s
+ => [internal] load .dockerignore                                                                             0.0s
+ => => transferring context: 2B                                                                               0.0s
+ => [1/3] FROM docker.io/library/ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df                          0.0s
+ => => resolve docker.io/library/ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df                         0.0s
+ => [internal] load build context                                                                             0.0s
+ => => transferring context: 59B                                                                              0.0s
+ => CACHED [2/3] RUN apt-get update && apt-get install -y nginx && rm -rf /var/lib/apt                        0.0s
+ => CACHED [3/3] COPY --chown=www-data:www-data src/ /var/www/html/                                             0.0s
+ => exporting to image                                                                                        0.1s
+ => => exporting layers                                                                                       0.0s
+ => => exporting manifest sha256:54f0b5304c9a109727f894fb5fd5fc44de532cdea13e736c68ea1                         0.0s
+ => => exporting config sha256:78a0e1008a10ed27981fb32c5def1554975d85db7fff0a0b6f80806                         0.0s
+ => => exporting attestation manifest sha256:2feb9cdd24dc689e6598e576c2b6e1798bc34ab53                         0.0s
+ => => exporting manifest list sha256:688d4f80a626650a12b2038747bc6ed627a9c6b4e93f0462                         0.0s
+ => => naming to docker.io/library/codyssey_pre-course_1-1-web:latest                                           0.0s
+ => => unpacking to docker.io/library/codyssey_pre-course_1-1-web:latest                                      0.0s
+ => resolving provenance for metadata file                                                                    0.0s
+[+] up 2/2
+✔ Image codyssey_pre-course_1-1-web Built                                                                     1.9s
+✔ Container ubuntu-web-test   Started                                                                         0.6s
+PS C:\users\user\Documents\Junsang3101\Codyssey_Pre-Course_1-1>
+```
 
 ### GitHub SSH 키 설정
 
-![15-1. GitHub SSH 키 설정](./기능%20요구%20사항%20증빙%20자료/15-1.%20GitHub%20SSH%20키%20설정.png)
+윈도에 기본으로 내장되어있는 openssl 로 ed25519 SSL키를 만들어 깃에 등록하였다.
 
-![15-2. GitHub SSH 키 설정](./기능%20요구%20사항%20증빙%20자료/15-2.%20ssh키로%20git%20push.png)
+```powershell
+PS C:\Users\컴퓨터정보학과 10616호> ssh-keygen -t ed25519 -C "3101junsang@gmail.com"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (C:\Users\컴퓨터정보학과 10616호/.ssh/id_ed25519): testkey
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in testkey
+Your public key has been saved in testkey.pub
+The key fingerprint is:
+SHA256:+BWml+ajhyupmssU4qU/72vQs83hVgdH4L5fbRopZ24 3101junsang@gmail.com
+The key's randomart image is:
++--[ED25519 256]--+
+|         ..      |
+|        .  .     |
+|         .+      |
+|       ..+ +     |
+|. ... . S.B      |
+|..oo o o *..  o  |
+| o. . *.+o+. * o |
+| o.o oo=..o.*E+  |
+|  =+*=o.oo ..o   |
++----[SHA256]-----+
+PS C:\Users\컴퓨터정보학과 10616호> get-content .\testkey.pub | set-clipboard
+```
+
+```powershell
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git remote set-url origin git@github.com:junsang3101/Codyssey_Pre-Course_1-1.git
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git remote -v
+origin  git@github.com:junsang3101/Codyssey_Pre-Course_1-1.git (fetch)
+origin  git@github.com:junsang3101/Codyssey_Pre-Course_1-1.git (push)
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git push
+The authenticity of host 'github.com (20.200.245.247)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? y
+Please type 'yes', 'no' or the fingerprint: yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Enter passphrase for key '/c/Users/User/.ssh/id_ed25519':
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (9/9), 177.19 KiB | 1.05 MiB/s, done.
+Total 9 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), done.
+To github.com:junsang3101/Codyssey_Pre-Course_1-1.git
+   82bf624..d851285  main -> main
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1>
+```
+
+![15-1. GitHub SSH 키 설정](./기능%20요구%20사항%20증빙%20자료/15-1.%20GitHub%20SSH%20키%20설정.png)
 
 ### 트러블 슈팅
 
@@ -311,7 +525,32 @@ root@5f31696b2eac:/var/www/html#
 - **해결**: git remote set-url 을 통해 SSH키를 사용하도록 함
 - **배운점**: 인증 방식은 GitHub키 등록과 별개로 remote 주소 형식도 바꿔줘야 등록된 키로 인증할 수 있음
 
-![1. 트러블 슈팅](./기능%20요구%20사항%20증빙%20자료/트러블%20슈팅%20증빙%20자료1(git)%20.png)
+```powershell
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git remote -v
+origin  https://github.com/Junsang3101/Codyssey_Pre-Course_1-1.git (fetch)
+origin  https://github.com/Junsang3101/Codyssey_Pre-Course_1-1.git (push)
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git remote set-url origin git@github.com:Junsang3101/Codyssey_Pre-Course_1-1.git
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git remote -v
+origin  git@github.com:Junsang3101/Codyssey_Pre-Course_1-1.git (fetch)
+origin  git@github.com:Junsang3101/Codyssey_Pre-Course_1-1.git (push)
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git add .
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git commit -m "보너스 과제 1, 5 번 진행"
+[main 097ddbf] 보너스 과제 1, 5 번 진행
+ 1 file changed, 24 insertions(+), 13 deletions(-)
+PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git push
+Enter passphrase for key '/c/Users/User/.ssh/id_ed25519':
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 731 bytes | 731.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), done.
+remote: This repository moved. Please use the new location:
+remote:   git@github.com:Junsang3101/Codyssey_Pre-Course_1-1.git
+To github.com:Junsang3101/Codyssey_Pre-Course_1-1.git
+   47a4d94..097ddbf  main -> main
+```
 
 ### 2: 
 
