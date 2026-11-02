@@ -1,0 +1,19 @@
+root@7aebb4fd4b57:/home# mkdir testdir
+root@7aebb4fd4b57:/home# touch testfile
+root@7aebb4fd4b57:/home# ls -al
+total 16
+drwxr-xr-x 4 root   root   4096 Nov  2 11:39 .
+drwxr-xr-x 1 root   root   4096 Nov  2 10:34 ..
+drwxr-xr-x 2 root   root   4096 Nov  2 11:39 testdir
+-rw-r--r-- 1 root   root      0 Nov  2 11:39 testfile
+drwxr-x--- 2 ubuntu ubuntu 4096 Nov  2 10:34 ubuntu
+root@7aebb4fd4b57:/home# chmod 777 testdir
+root@7aebb4fd4b57:/home# chmod 777 testfile
+root@7aebb4fd4b57:/home# ls -al
+total 16
+drwxr-xr-x 4 root   root   4096 Nov  2 11:39 .
+drwxr-xr-x 1 root   root   4096 Nov  2 10:34 ..
+drwxrwxrwx 2 root   root   4096 Nov  2 11:39 testdir
+-rwxrwxrwx 1 root   root      0 Nov  2 11:39 testfile
+drwxr-x--- 2 ubuntu ubuntu 4096 Nov  2 10:34 ubuntu
+root@7aebb4fd4b57:/home# 

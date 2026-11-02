@@ -1,0 +1,17 @@
+Microsoft Windows [Version 10.0.26300.9711]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\User>curl http://localhost:8080
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>코디세이 입학 연수 1-1 Hello World!</title>
+    </head>
+
+    <body>
+        <h1>Hello World!</h1>
+        <p>도커로 실행한 웹 페이지입니다.</p>
+    </body>
+</html>
+C:\Users\User>
