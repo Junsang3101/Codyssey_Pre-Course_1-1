@@ -6,10 +6,7 @@ app = Flask(__name__)
 # Docker compose 가 내부적으로 DNS가 있어 host="redis"로 redis 컨테이너로 접근 가능
 r = redis.Redis(host="redis", port=6379, decode_responses=True)
 
-# flask 데코레이터 '/hello'로 함수 실행하게 함 '/hello' HTTP 요청 -> API호출/Endpoint호출
-@app.route("/hello")
-def hello():
-    return jsonify(message="Hello from app!", container=socket.gethostbyname())
+# flask 데코레이터 '/count'로 함수 실행하게 함 '/count' HTTP 요청 -> API호출/Endpoint호출
 
 @app.route("/count")
 def count():

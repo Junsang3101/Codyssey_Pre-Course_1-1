@@ -3,7 +3,7 @@ services:
     build: .
     container_name: ubuntu-web-test
     ports:
-      - "8080:${WEB_PORT}"
+      - "${HOST_PORT}:${WEB_PORT}"
     volumes:
       - ./src:/var/www/html
       - ./proxy/default.conf:/etc/nginx/sites-enabled/default:ro

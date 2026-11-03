@@ -4,6 +4,24 @@
 본 프로젝트는 개발 워크스테이션 세팅 미션의 일환으로 Linux CLI(터미널), Docker(컨테이너), Git/GitHub(버전 관리 및 협업 도구)를 함께 사용해 누구나 같은 방식으로 실행하고 디버깅할 수 있는 환경을 구성하는 것을 목표로 합니다.
 
 **프로젝트 구조**  
+
+```text
+.
+├── app/                              # 방문 횟수 API를 제공하는 Flask 애플리케이션
+│   ├── app.py                        # /count API와 Redis 연동
+│   ├── Dockerfile                    # Flask 애플리케이션 이미지 빌드 설정
+│   └── requirements.txt              # Flask, Redis Python 패키지 목록
+├── evidence/                         # 증빙 자료
+├── proxy/
+│   └── default.conf                  # Nginx 웹 및 API 프록시 설정
+├── src/
+│   └── index.html                    # 브라우저에 제공하는 웹 페이지
+├── .env                              # 환경 변수 설정
+├── compose.yaml                      # web, app, Redis 서비스와 볼륨 정의
+├── dockerfile                        # Nginx 웹 서버 이미지 빌드 설정
+└── README.md                         # 프로젝트 안내와 실행 및 실습 기록
+```
+
 Docker Compose로 웹 서버, Flask 애플리케이션, Redis 데이터베이스를 함께 실행합니다.  
 
 - **web**: Ubuntu와 Nginx로 구성되어 웹 페이지를 제공하고 API 요청을 Flask 앱으로 전달합니다.
@@ -17,9 +35,11 @@ Nginx는 이 요청을 Flask의 `/count` 경로로 전달합니다. Flask는 Red
 
 브라우저 → Nginx(web) → Flask(app) → Redis(redis) 
 
-
 **프로젝트 실행 방법**  
-프로젝트가 있는 프롬프트(터미널) `~\Codyssey_Pre-Course_1-1>`에서 `docker compose up -d --build` 한 후 `http://localhost:8080`에 접속한다.
+해당 프로젝트는 8080포트를 사용합니다. 사용중이라면, powershell 기준 `netstat -ano | findstr :8080` 를 사용하여 해당 프로세스를 확인하고,  
+`taskkill /f  /pid 1234`를 사용하여 종료해 주세요. 혹은 `.env`에서  `HOST_PORT=8080` 의 포트를 임의로 변경해주세요.
+프로젝트가 있는 프롬프트(터미널) `~\Codyssey_Pre-Course_1-1>`에서 `docker compose up -d --build` 한 후 `http://localhost:8080`에 접속합니다.
+새로고침 / 재접속 시 방문 횟수가 증가합니다.
 
 ## 2. 실행 환경
 
@@ -91,11 +111,11 @@ hello-world 컨테이너를 실행 해보고
 
 ### 3-7. 포트 매핑 및 접속
 
+Docker는 컨테이너들을 자체 사설 네트워크로 관리하기 때문에 포트 포워딩을 해줘야 실제 호스트에서 컨테이너로 접근할 수 있다. 
 `compose.yaml`에서 호스트의 8080 포트를 컨테이너의 80 포트에 매핑하고,  
-CMD에서 `curl http://localhost:8080`을 실행해 호스트에서 웹 페이지에 접속되는 것을 확인했습니다.
+CMD에서 `curl http://localhost:8080`을 실행해 호스트에서 웹 페이지에 접속되는 것을   확인했습니다.
 
 - [compose.yaml](./compose.yaml)
-
 - [CMD 호스트 접속 로그](./evidence/CMD%20호스트%20접속%20로그.txt)
 
 ### 3-8. Docker 볼륨 영속성 검증
