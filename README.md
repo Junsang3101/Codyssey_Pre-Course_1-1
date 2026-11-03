@@ -50,7 +50,7 @@ Nginx는 이 요청을 Flask의 `/count` 경로로 전달합니다. Flask는 Red
 
 Ubuntu 컨테이너에 `docker exec -it`로 접속해 `pwd`, `cd`, `mkdir`, `touch`, `rm -rf`, `ls -al`, `cp`, `mv` 명령으로 기본적인 터미널 조작을 익혔습니다.
 
-- [전체 실행 로그](./기능%20요구%20사항%20증빙%20자료/터미널%20조작%20로그%20기록.txt)
+- [전체 실행 로그](./evidence/터미널%20조작%20로그%20기록.txt)
 
 ### 3-2. 권한 변경 실습
 
@@ -58,26 +58,26 @@ Ubuntu 컨테이너에 `docker exec -it`로 접속해 `pwd`, `cd`, `mkdir`, `tou
 `ls -l`을 사용하면 `-rwxrwxrwx`(사용자, 그룹, 기타), `root root`(사용자, 그룹) 형태로 확인할 수 있습니다.  
 권한은 `chmod` 로 변경할 수 있고 읽기는 4, 쓰기는 2, 실행은 1과 대응하며 0~7까지의 상태를 갖습니다.  
 
-- [사용자 권한 변경 로그](./기능%20요구%20사항%20증빙%20자료/사용자%20권환%20변경%20로그.txt)
+- [사용자 권한 변경 로그](./evidence/사용자%20권환%20변경%20로그.txt)
 
 ### 3-3. Docker 기본 점검
 
 `docker version`과 `docker info`를 사용해 Docker 버전과 데몬 정보를 확인했습니다.
 
-- [Docker 기본 점검 로그](./기능%20요구%20사항%20증빙%20자료/Docker%20기본%20점검%20로그.txt)
+- [Docker 기본 점검 로그](./evidence/Docker%20기본%20점검%20로그.txt)
 
 ### 3-4. Docker 기본 운영 명령
 
 `docker ps -a`, `docker images`, `docker stats`, `docker logs` 명령으로 이미지·컨테이너 목록, 로그, 자원 사용량을 확인했습니다.
 
-- [Docker 기본 운영 명령 수행 로그](./기능%20요구%20사항%20증빙%20자료/Docker%20기본%20운영%20명령%20수행%20로그.txt)
+- [Docker 기본 운영 명령 수행 로그](./evidence/Docker%20기본%20운영%20명령%20수행%20로그.txt)
 
 
 ### 3-5. 컨테이너 실행
 
 실행 중인 Ubuntu 컨테이너에 `docker exec -it`로 접속해 `ls`와 `echo` 명령을 실행했습니다.
 
-- [컨테이너 실행 로그](./기능%20요구%20사항%20증빙%20자료/컨테이너%20실행%20로그.txt)
+- [컨테이너 실행 로그](./evidence/컨테이너%20실행%20로그.txt)
 
 ### 3-6. Dockerfile 기반 커스텀 이미지 제작
 
@@ -85,7 +85,7 @@ Ubuntu 컨테이너에 `docker exec -it`로 접속해 `pwd`, `cd`, `mkdir`, `tou
 `dockerfile` 설정과 이미지를 가지고 새로운 이미지를 만들 수 있습니다.  
 
 
-- [커스텀 이미지 생성 로그](./기능%20요구%20사항%20증빙%20자료/커스텀%20이미지%20생성%20로그.txt)
+- [커스텀 이미지 생성 로그](./evidence/커스텀%20이미지%20생성%20로그.txt)
 
 ### 3-7. 포트 매핑 및 접속
 
@@ -93,25 +93,25 @@ Ubuntu 컨테이너에 `docker exec -it`로 접속해 `pwd`, `cd`, `mkdir`, `tou
 
 - [compose.yaml](./compose.yaml)
 
-- [CMD 호스트 접속 로그](./기능%20요구%20사항%20증빙%20자료/CMD%20호스트%20접속%20로그.txt)
+- [CMD 호스트 접속 로그](./evidence/CMD%20호스트%20접속%20로그.txt)
 
 ### 3-8. Docker 볼륨 영속성 검증
 
 새 Docker 볼륨을 만들고 컨테이너 경로에 연결한 뒤 테스트 파일을 생성했습니다. 컨테이너를 삭제하고 같은 볼륨을 새 컨테이너에 연결한 후에도 파일이 남아 있는 것을 확인했습니다.
 
-- [Docker 볼륨 영속성 검증 로그](./기능%20요구%20사항%20증빙%20자료/Docker%20volume%20영속성%20검증%20로그.txt)
+- [Docker 볼륨 영속성 검증 로그](./evidence/Docker%20volume%20영속성%20검증%20로그.txt)
 
 ### 3-9. Git 설정 및 GitHub 연동
 
 `git clone`으로 저장소를 로컬 환경에 복제하고, `git add`, `git commit`, `git push` 명령으로 변경 사항이 원격 저장소에 반영되는 것을 확인했습니다.
 
-- [Git 설정 및 커밋 로그](./기능%20요구%20사항%20증빙%20자료/Git%20설정%20및%20커밋%20로그.txt)
+- [Git 설정 및 커밋 로그](./evidence/Git%20설정%20및%20커밋%20로그.txt)
 
 ### 3-10. Docker Compose 기초
 
 `compose.yaml`에 실행 설정을 분리하고 `docker compose up`으로 정의한 서비스를 실행했습니다. Compose를 사용하면 여러 서비스를 한 설정 파일에서 함께 관리할 수 있습니다.
 
-- [Docker Compose 생성 로그](./기능%20요구%20사항%20증빙%20자료/Docker%20Compose%20생성%20로그.txt)
+- [Docker Compose 생성 로그](./evidence/Docker%20Compose%20생성%20로그.txt)
 
 ### 3-11. Docker Compose 멀티 컨테이너 활용
 
@@ -119,20 +119,20 @@ app(python + flask), web(ubuntu + nginx), redis(메모리 기반 db) 컨테이�
 클라이언트가 사이트에 접속(index.html)하면 내부 자바스크립트로 /api/count 요청이 80포트로 들어오고, /api/ 요청은 app:5000 포트로 보내서
 /count를 처리해 visits가 증가한다.
 
-- [멀티 컨테이너 활용 로그](./기능%20요구%20사항%20증빙%20자료/멀티%20컨에티너%20활용%20로그.txt)
+- [멀티 컨테이너 활용 로그](./evidence/멀티%20컨에티너%20활용%20로그.txt)
 
 ### 3-12. Compose 운영 명령어 습득
 
 `docker compose`의 `up`, `down`, `ps`, `logs` 명령어를 습득/수행 하였다.
 
-- [Compose 명령어 수행 로그](./기능%20요구%20사항%20증빙%20자료/Compose%20명령어%20수행%20로그.txt)
+- [Compose 명령어 수행 로그](./evidence/Compose%20명령어%20수행%20로그.txt)
 
 ### 3-13. Compose에서 환경 변수 활용
 
 `.env` 파일에 환경 컨테이너들의 포트 설정을 저장해 `compose.yaml` 수정 없이 `.env` 만으로 설정을 바꿀 수 있고 추후 중요 데이터를 은닉할 수 있다.  
   
 
-`env`에서 발췌
+`.env`에서 발췌
 
 ```.env
 WEB_PORT=80
@@ -147,8 +147,8 @@ FLASK_DEBUG=1   # FLASK_DEBUG=0: 디버그 모드 끄기 1: 켜기
 
 `ssh-keygen`으로 Ed25519 SSH 키를 생성해 GitHub에 등록하고, 로컬 저장소의 원격 주소를 `git remote set-url`로 SSH 형식으로 변경했습니다.
 
-- [SSH 키 생성 로그](./기능%20요구%20사항%20증빙%20자료/SSH%20키%20생성%20로그.txt)
-- ![GitHub Deploy Keys 설정 화면](./기능%20요구%20사항%20증빙%20자료/GitHub%20Deplay%20Keys%20설정%20화면.png)
+- [SSH 키 생성 로그](./evidence/SSH%20키%20생성%20로그.txt)
+- ![GitHub Deploy Keys 설정 화면](./evidence/GitHub%20Deplay%20Keys%20설정%20화면.png)
 
 ### 3-15. 트러블슈팅
 
@@ -159,7 +159,7 @@ FLASK_DEBUG=1   # FLASK_DEBUG=0: 디버그 모드 끄기 1: 켜기
 - **해결**: `git remote set-url`로 원격 주소를 SSH 형식으로 변경했습니다.
 - **배운 점**: GitHub에 SSH 키를 등록하는 것과 별개로, 저장소의 원격 주소도 SSH 형식이어야 해당 키로 인증됩니다.
 
-- [Git 인증 방법 변경 로그](./기능%20요구%20사항%20증빙%20자료/Git%20인증%20방법%20변경%20로그.txt)
+- [Git 인증 방법 변경 로그](./evidence/Git%20인증%20방법%20변경%20로그.txt)
 
 #### 2. (작성 예정)
 

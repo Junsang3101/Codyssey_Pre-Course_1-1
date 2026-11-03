@@ -1,0 +1,16 @@
+PS E:\git_repo\Codyssey_Pre-Course_1-1> docker ps -a
+CONTAINER ID   IMAGE                         COMMAND                   CREATED              STATUS                          PORTS                                     NAMES
+3c068b4f13b1   hello-world                   "/hello"                  About a minute ago   Exited (0) About a minute ago                                             hello
+77342d9561f9   codyssey_pre-course_1-1-web   "nginx -g 'daemon of…"   15 hours ago         Up 15 hours                     0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   ubuntu-web-test
+f8af74ba8534   16079772c3eb                  "python app.py"           17 hours ago         Up 17 hours                     5000/tcp                                  codyssey_pre-course_1-1-app-1
+ca588bae016e   redis                         "redis-server --appe…"   17 hours ago         Up 17 hours                     6379/tcp                                  codyssey_pre-course_1-1-redis-1
+308a1c66ebd9   ubuntu                        "sleep infinity"          20 hours ago         Up 20 hours                                                               NewTestContainer
+PS E:\git_repo\Codyssey_Pre-Course_1-1> docker start 3c0
+3c0
+PS E:\git_repo\Codyssey_Pre-Course_1-1> docker ps
+CONTAINER ID   IMAGE                         COMMAND                   CREATED        STATUS        PORTS                                     NAMES
+77342d9561f9   codyssey_pre-course_1-1-web   "nginx -g 'daemon of…"   15 hours ago   Up 15 hours   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   ubuntu-web-test
+f8af74ba8534   16079772c3eb                  "python app.py"           17 hours ago   Up 17 hours   5000/tcp                                  codyssey_pre-course_1-1-app-1
+ca588bae016e   redis                         "redis-server --appe…"   17 hours ago   Up 17 hours   6379/tcp                                  codyssey_pre-course_1-1-redis-1
+308a1c66ebd9   ubuntu                        "sleep infinity"          20 hours ago   Up 20 hours                                             NewTestContainer
+PS E:\git_repo\Codyssey_Pre-Course_1-1> 
