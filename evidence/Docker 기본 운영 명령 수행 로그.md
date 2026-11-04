@@ -1,3 +1,6 @@
+# Docker 기본 운영 명령 수행 로그
+
+```text
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker images
                                                                                                                                           i Info →   U  In Use
 IMAGE                                ID             DISK USAGE   CONTENT SIZE   EXTRA
@@ -48,3 +51,4 @@ PS E:\git_repo\Codyssey_Pre-Course_1-1> docker logs -ft b3c
 2026-11-02T09:55:01.167778206Z 172.18.0.1 - - [02/Nov/2026:09:55:01 +0000] "GET / HTTP/1.1" 200 234 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
 2026-11-02T09:55:01.307634778Z 172.18.0.1 - - [02/Nov/2026:09:55:01 +0000] "GET /favicon.ico HTTP/1.1" 404 196 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
 PS E:\git_repo\Codyssey_Pre-Course_1-1> 
+```

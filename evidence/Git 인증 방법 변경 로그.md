@@ -1,3 +1,6 @@
+# Git 인증 방법 변경 로그
+
+```text
 PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git remote -v
 origin  https://github.com/Junsang3101/Codyssey_Pre-Course_1-1.git (fetch)
 origin  https://github.com/Junsang3101/Codyssey_Pre-Course_1-1.git (push)
@@ -22,3 +25,4 @@ remote: This repository moved. Please use the new location:
 remote:   git@github.com:Junsang3101/Codyssey_Pre-Course_1-1.git
 To github.com:Junsang3101/Codyssey_Pre-Course_1-1.git
    47a4d94..097ddbf  main -> main
+```

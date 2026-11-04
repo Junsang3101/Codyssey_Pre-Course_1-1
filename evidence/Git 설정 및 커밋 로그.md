@@ -1,3 +1,6 @@
+# Git 설정 및 커밋 로그
+
+```text
 PS E:\git_repo\Codyssey_Pre-Course_1-1> git config -l
 diff.astextplain.textconv=astextplain
 filter.lfs.clean=git-lfs clean -- %f
@@ -92,3 +95,4 @@ remote:   https://github.com/Junsang3101/Codyssey_Pre-Course_1-1.git
 To https://github.com/junsang3101/Codyssey_Pre-Course_1-1.git
    bbbab17..a53fab3  main -> main
 PS E:\git_repo\Codyssey_Pre-Course_1-1> 
+```

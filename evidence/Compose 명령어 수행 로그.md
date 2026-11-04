@@ -1,3 +1,6 @@
+# Compose 명령어 수행 로그
+
+```text
 PS E:\git_repo\Codyssey_Pre-Course_1-1\proxy> docker compose ps
 NAME                              IMAGE                         COMMAND                   SERVICE   CREATED         STATUS         PORTS
 codyssey_pre-course_1-1-app-1     codyssey_pre-course_1-1-app   "python app.py"           app       8 seconds ago   Up 7 seconds   5000/tcp
@@ -13,3 +16,4 @@ PS E:\git_repo\Codyssey_Pre-Course_1-1\proxy> docker compose down
  ✔ Container codyssey_pre-course_1-1-redis-1 Removed                                          0.3s
  ✔ Network codyssey_pre-course_1-1_default   Removed                                          0.2s
 PS E:\git_repo\Codyssey_Pre-Course_1-1\proxy> 
+```

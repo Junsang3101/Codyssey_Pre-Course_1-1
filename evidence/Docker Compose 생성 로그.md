@@ -1,3 +1,6 @@
+# Docker Compose 생성 로그
+
+```text
 PS C:\users\user\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker compose up -d --build
 [+] Building 1.7s (11/11) FINISHED
  => [internal] load local bake definitions                                                                    0.0s
@@ -27,3 +30,4 @@ PS C:\users\user\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker compose u
 ✔ Image codyssey_pre-course_1-1-web Built                                                                     1.9s
 ✔ Container ubuntu-web-test   Started                                                                         0.6s
 PS C:\users\user\Documents\Junsang3101\Codyssey_Pre-Course_1-1>
+```

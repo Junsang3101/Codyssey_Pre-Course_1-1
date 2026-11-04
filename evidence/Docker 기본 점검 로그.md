@@ -1,3 +1,6 @@
+# Docker 기본 점검 로그
+
+```text
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker info
 Client:
  Version:    29.9.2
@@ -108,3 +111,4 @@ Server:
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker --version
 Docker version 29.9.2, build a82e528
 PS E:\git_repo\Codyssey_Pre-Course_1-1> 
+```

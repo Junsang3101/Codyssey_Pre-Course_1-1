@@ -1,3 +1,6 @@
+# hello-world 컨테이너 실행 로그
+
+```text
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker ps -a
 CONTAINER ID   IMAGE                         COMMAND                   CREATED              STATUS                          PORTS                                     NAMES
 3c068b4f13b1   hello-world                   "/hello"                  About a minute ago   Exited (0) About a minute ago                                             hello
@@ -31,3 +34,4 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 
 PS E:\git_repo\Codyssey_Pre-Course_1-1> 
+```

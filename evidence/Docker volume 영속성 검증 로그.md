@@ -1,3 +1,6 @@
+# Docker volume 영속성 검증 로그
+
+```text
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker volume create testVol
 testVol
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker run -d -v testVol:/home --name testContainer ubuntu sleep infinity
@@ -78,3 +81,4 @@ root@308a1c66ebd9:/# cd home
 root@308a1c66ebd9:/home# ls
 testfile  ubuntu
 root@308a1c66ebd9:/home# 
+```

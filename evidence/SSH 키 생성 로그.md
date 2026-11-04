@@ -1,3 +1,5 @@
+# SSH 키 생성 로그
+
 ```powershell
 PS C:\Users\컴퓨터정보학과 10616호> ssh-keygen -t ed25519 -C "3101junsang@gmail.com"
 Generating public/private ed25519 key pair.
