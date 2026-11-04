@@ -1,5 +1,7 @@
 # Docker volume 영속성 검증 로그
 
+Docker는 컨테이너 데이터를 보존하기 위해 바인드 마운트와 볼륨을 제공합니다. `docker run`의 `-v` 옵션이나 `compose.yaml`의 `volumes:` 설정으로 호스트 디렉터리 또는 Docker 볼륨을 컨테이너 디렉터리에 연결할 수 있습니다. 바인드 마운트는 호스트 파일의 변경 사항이 컨테이너에 반영되므로 소스 파일을 다루는 데 유용합니다. 이 실습에서는 볼륨을 연결한 컨테이너에서 파일을 만든 뒤 컨테이너를 삭제하고, 같은 볼륨을 새 컨테이너에 연결해 데이터가 보존되는지 확인했습니다.
+
 ```powershell
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker volume create testVol
 testVol

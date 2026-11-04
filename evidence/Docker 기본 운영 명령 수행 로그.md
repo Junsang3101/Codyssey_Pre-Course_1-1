@@ -1,5 +1,7 @@
 # Docker 기본 운영 명령 수행 로그
 
+`docker ps -a`, `docker images`, `docker stats`, `docker logs` 명령으로 이미지·컨테이너 목록, 로그, 자원 사용량을 확인했습니다.
+
 ```powershell
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker images
                                                                                                                                           i Info →   U  In Use

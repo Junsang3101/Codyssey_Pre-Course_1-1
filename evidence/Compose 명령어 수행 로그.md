@@ -1,5 +1,7 @@
 # Compose 명령어 수행 로그
 
+`docker compose ps`로 서비스 상태를 확인하고, `docker compose logs`로 로그를 조회한 뒤 `docker compose down`으로 서비스를 종료했습니다.
+
 ```powershell
 PS E:\git_repo\Codyssey_Pre-Course_1-1\proxy> docker compose ps
 NAME                              IMAGE                         COMMAND                   SERVICE   CREATED         STATUS         PORTS

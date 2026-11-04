@@ -1,5 +1,13 @@
 # SSH 키 생성 로그
 
+`ssh-keygen`으로 Ed25519 SSH 키를 생성해 GitHub에 등록하고, 로컬 저장소의 원격 주소를 `git remote set-url`로 SSH 형식으로 변경했습니다.
+
+## GitHub Deploy Keys 설정 화면
+
+![GitHub Deploy Keys 설정 화면](./GitHub%20Deploy%20Keys%20설정%20화면.png)
+
+## SSH 키 생성 및 공개 키 복사
+
 ```powershell
 PS C:\Users\컴퓨터정보학과 10616호> ssh-keygen -t ed25519 -C "3101junsang@gmail.com"
 Generating public/private ed25519 key pair.
@@ -25,6 +33,8 @@ The key's randomart image is:
 PS C:\Users\컴퓨터정보학과 10616호> get-content .\testkey.pub | set-clipboard
 ```
 
+## SSH 원격 주소 설정 및 접속 확인
+
 ```powershell
 PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git remote set-url origin git@github.com:junsang3101/Codyssey_Pre-Course_1-1.git
 PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1> git remote -v
@@ -48,3 +58,4 @@ remote: Resolving deltas: 100% (2/2), done.
 To github.com:junsang3101/Codyssey_Pre-Course_1-1.git
    82bf624..d851285  main -> main
 PS C:\Users\User\Documents\Junsang3101\Codyssey_Pre-Course_1-1>
+```

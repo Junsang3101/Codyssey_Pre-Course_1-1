@@ -1,5 +1,7 @@
 # Docker 기본 점검 로그
 
+`docker version`과 `docker info`를 사용해 Docker 버전과 데몬 정보를 확인했습니다.
+
 ```powershell
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker info
 Client:

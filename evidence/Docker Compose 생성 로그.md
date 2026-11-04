@@ -1,5 +1,7 @@
 # Docker Compose 생성 로그
 
+서비스 실행 설정을 `compose.yaml`에 정의하고 `docker compose up`으로 서비스를 실행했습니다. Docker Compose를 사용하면 여러 서비스를 하나의 설정 파일에서 함께 관리할 수 있습니다.
+
 ```powershell
 PS C:\users\user\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker compose up -d --build
 [+] Building 1.7s (11/11) FINISHED

@@ -1,5 +1,7 @@
 # Git 설정 및 커밋 로그
 
+`git clone`으로 저장소를 로컬 환경에 복제하고, `git add`, `git commit`, `git push` 명령으로 변경 사항을 원격 저장소에 반영했습니다.
+
 ```powershell
 PS E:\git_repo\Codyssey_Pre-Course_1-1> git config -l
 diff.astextplain.textconv=astextplain
