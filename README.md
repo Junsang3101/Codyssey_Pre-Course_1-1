@@ -60,6 +60,8 @@ Nginx는 이 요청을 Flask의 `/count` 경로로 전달합니다. Flask는 Red
 - [x] 3-7. 포트 매핑 및 접속
 - [x] 3-8. Docker 볼륨 영속성 검증
 - [x] 3-9. Git 설정 및 GitHub 연동
+
+**보너스 과제 (선택)**
 - [x] 3-10. Docker Compose 기초
 - [x] 3-11. Docker Compose 멀티 컨테이너
 - [x] 3-12. Compose 운영 명령어 습득
