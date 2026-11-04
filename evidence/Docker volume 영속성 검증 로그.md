@@ -1,6 +1,6 @@
 # Docker volume 영속성 검증 로그
 
-```text
+```powershell
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker volume create testVol
 testVol
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker run -d -v testVol:/home --name testContainer ubuntu sleep infinity

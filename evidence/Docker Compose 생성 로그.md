@@ -1,6 +1,6 @@
 # Docker Compose 생성 로그
 
-```text
+```powershell
 PS C:\users\user\Documents\Junsang3101\Codyssey_Pre-Course_1-1> docker compose up -d --build
 [+] Building 1.7s (11/11) FINISHED
  => [internal] load local bake definitions                                                                    0.0s

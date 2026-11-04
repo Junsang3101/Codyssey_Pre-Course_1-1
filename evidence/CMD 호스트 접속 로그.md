@@ -1,6 +1,6 @@
 # CMD 호스트 접속 로그
 
-```text
+```cmd
 Microsoft Windows [Version 10.0.26300.9711]
 (c) Microsoft Corporation. All rights reserved.
 

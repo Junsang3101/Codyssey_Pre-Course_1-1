@@ -1,6 +1,6 @@
 # Docker 기본 점검 로그
 
-```text
+```powershell
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker info
 Client:
  Version:    29.9.2

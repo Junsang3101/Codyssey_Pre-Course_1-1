@@ -1,6 +1,6 @@
 # Docker 기본 운영 명령 수행 로그
 
-```text
+```powershell
 PS E:\git_repo\Codyssey_Pre-Course_1-1> docker images
                                                                                                                                           i Info →   U  In Use
 IMAGE                                ID             DISK USAGE   CONTENT SIZE   EXTRA

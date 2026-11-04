@@ -1,6 +1,6 @@
 # Git 설정 및 커밋 로그
 
-```text
+```powershell
 PS E:\git_repo\Codyssey_Pre-Course_1-1> git config -l
 diff.astextplain.textconv=astextplain
 filter.lfs.clean=git-lfs clean -- %f

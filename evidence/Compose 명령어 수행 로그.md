@@ -1,6 +1,6 @@
 # Compose 명령어 수행 로그
 
-```text
+```powershell
 PS E:\git_repo\Codyssey_Pre-Course_1-1\proxy> docker compose ps
 NAME                              IMAGE                         COMMAND                   SERVICE   CREATED         STATUS         PORTS
 codyssey_pre-course_1-1-app-1     codyssey_pre-course_1-1-app   "python app.py"           app       8 seconds ago   Up 7 seconds   5000/tcp
